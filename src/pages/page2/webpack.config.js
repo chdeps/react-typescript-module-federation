@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
+const deps = require('../../../package.json').dependencies
 
 module.exports = {
   entry: './src/index.ts',
@@ -33,10 +34,16 @@ module.exports = {
       exposes: {
         './CounterAppTwo': './src/components/CounterAppTwo',
       },
-      shared: [
-        'react', 
-        'react-dom'
-      ], 
+      shared: {
+        react: {
+          requiredVersion: deps.react,
+          singleton: true 
+        },
+        'react-dom': {
+          requiredVersion: deps['react-dom'],
+          singleton: true 
+        }
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
