@@ -1,19 +1,31 @@
 {
+  "name": "container",
+  "version": "0.0.0",
   "private": true,
-  "workspaces": {
-    "packages": [
-      "app1",
-      "app2",
-      "container"
-    ]
+  "devDependencies": {
+    "@types/node": "^15.0.3",
+    "@types/react": "^17.0.5",
+    "@types/react-dom": "^17.0.5",
+    "ts-loader": "^9.1.2",
+    "html-webpack-plugin": "5.3.2",
+    "serve": "12.0.1",
+    "typescript": "4.3.5",
+    "webpack": "5.61.0",
+    "webpack-cli": "4.9.0",
+    "webpack-dev-server": "^4.4.0"
   },
   "scripts": {
-    "start": "lerna run --parallel start",
-    "build": "lerna run build",
-    "serve": "lerna run --parallel serve",
-    "clean": "lerna run --parallel clean"
+    "start:container": "webpack-cli serve",
+    "start:page1": "cd ./src/pages/page1 && webpack-cli serve",
+    "start:page2": "cd ./src/pages/page2 && webpack-cli serve",
+    "build": "webpack --mode production",
+    "build:page1": "webpack --mode production --config ./src/pages/page1/webpack.config.js",
+    "build:page2": "webpack --mode production --config ./src/pages/page2/webpack.config.js",
+    "serve": "serve dist -p 3002",
+    "clean": "rm -rf dist"
   },
-  "devDependencies": {
-    "lerna": "3.22.1"
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   }
 }

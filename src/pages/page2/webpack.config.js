@@ -1,10 +1,19 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
-const deps = require('./package.json').dependencies;
+const path = require('path');
 
 module.exports = {
   entry: './src/index.ts',
   mode: 'development',
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
+    port: 3002,
+  },
+  output: {
+    publicPath: 'auto',
+  },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
   },
@@ -19,24 +28,18 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'container',
-      library: { type: 'var', name: 'container' },
-      remotes: {
-        app1: 'app1',
-        app2: 'app2',
+      name: 'page2',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './CounterAppTwo': './src/components/CounterAppTwo',
       },
-      shared: {
-        ...deps,
-        react: { singleton: true, eager: true, requiredVersion: deps.react },
-        'react-dom': {
-          singleton: true,
-          eager: true,
-          requiredVersion: deps['react-dom'],
-        },
-      },
+      shared: [
+        'react', 
+        'react-dom'
+      ], 
     }),
     new HtmlWebpackPlugin({
-      template: './public/index.prod.html',
+      template: './public/index.html',
     }),
   ],
 };

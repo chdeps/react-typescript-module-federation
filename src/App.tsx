@@ -1,8 +1,8 @@
 import React from 'react';
 //@ts-ignore
-import CounterAppTwo from 'app2/CounterAppTwo';
+import CounterAppTwo from 'page2/CounterAppTwo';
 //@ts-ignore
-import CounterAppOne from 'app1/CounterAppOne';
+import CounterAppOne from 'page1/CounterAppOne';
 
 export default () => (
   <div style={{ margin: '20px' }}>
