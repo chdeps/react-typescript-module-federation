@@ -6,23 +6,18 @@
     "@types/node": "^15.0.3",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.5",
-    "ts-loader": "^9.1.2",
+    "concurrently": "^6.4.0",
     "html-webpack-plugin": "5.3.2",
     "serve": "12.0.1",
+    "ts-loader": "^9.1.2",
     "typescript": "4.3.5",
     "webpack": "5.61.0",
     "webpack-cli": "4.9.0",
     "webpack-dev-server": "^4.4.0"
   },
   "scripts": {
-    "start:container": "webpack-cli serve",
-    "start:page1": "cd ./src/pages/page1 && webpack-cli serve",
-    "start:page2": "cd ./src/pages/page2 && webpack-cli serve",
-    "build": "webpack --mode production",
-    "build:page1": "webpack --mode production --config ./src/pages/page1/webpack.config.js",
-    "build:page2": "webpack --mode production --config ./src/pages/page2/webpack.config.js",
-    "serve": "serve dist -p 3002",
-    "clean": "rm -rf dist"
+    "start": "concurrently \"webpack-cli serve\" \"cd ./src/pages/page1 && webpack-cli serve\" \"cd ./src/pages/page2 && webpack-cli serve\"",
+    "build": "concurrently \"webpack --mode production\" \"webpack --mode production --config ./src/pages/page1/webpack.config.js\" \"webpack --mode production --config ./src/pages/page2/webpack.config.js\""
   },
   "dependencies": {
     "react": "^17.0.2",
