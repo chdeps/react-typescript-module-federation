@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Shared } from "_components/Shared";
 //@ts-ignore
 const PageTwo = React.lazy(() => import("page2/PageTwo"));
-import IntegratedPageTwo from "./pages/page2/src/PageTwo";
+import IntegratedPageTwo from "_pages/page2/src/PageTwo";
 //@ts-ignore
 // import PageOne from "page1/PageOne";
 const PageOne = React.lazy(() => import("page1/PageOne"));
@@ -28,30 +29,29 @@ export default () => {
             justifyContent: "space-around",
           }}
         >
-          {isPageOne ? (
-            <React.Suspense fallback="Loading page one...">
-              <div
-                style={{
-                  marginRight: "2rem",
-                  padding: "2rem",
-                  border: "1px dashed black",
-                }}
-              >
+          <div
+            style={{
+              marginRight: "2rem",
+              padding: "2rem",
+              border: "1px dashed black",
+            }}
+          >
+            {isPageOne ? (
+              <React.Suspense fallback="Loading page one...">
                 <h2>APP-1</h2>
                 <PageOne />
-              </div>
-            </React.Suspense>
-          ) : (
-            <React.Suspense fallback="Loading page two...">
-              <div style={{ border: "1px dashed black", padding: "2rem" }}>
+              </React.Suspense>
+            ) : (
+              <React.Suspense fallback="Loading page two...">
                 <h2>APP-2</h2>
                 <PageTwo />
-              </div>
-            </React.Suspense>
-          )}
+              </React.Suspense>
+            )}
+          </div>
           <div style={{ border: "1px dashed black", padding: "2rem" }}>
-            <h2>INTEGRATED-APP-2</h2>
+            <h2>CONTAINER-APP-2</h2>
             <IntegratedPageTwo />
+            <Shared />
           </div>
         </div>
         <div

@@ -15,7 +15,15 @@
     "resolveJsonModule": true,
     "isolatedModules": false,
     "noEmit": false,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "_components/*": ["src/components/*"],
+      "_pages/*": ["src/pages/*"],
+    }
   },
   "include": ["src"],
+  "exclude": [
+    "./src/pages/page1/webpack.config.js", 
+    "./src/pages/page2/webpack.config.js"
+  ]
 }

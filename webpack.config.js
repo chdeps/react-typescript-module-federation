@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const path = require('path');
 const deps = require('./package.json').dependencies
 
@@ -17,6 +18,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
+    plugins: [new TsconfigPathsPlugin({ configFile: "./tsconfig.json" })]
   },
   module: {
     rules: [
@@ -31,19 +33,22 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'container',
       remotes: {
-        page1: "page1@http://localhost:3001/remoteEntry.js",
-        page2: "page2@http://localhost:3002/remoteEntry.js",
+        page1: "page1@http://localhost:3001/entryOne.js",
+        page2: "page2@http://localhost:3002/entryTwo.js",
       },
-      shared: {
-        react: {
-          requiredVersion: deps.react,
-          singleton: true 
+      shared: [
+        { 
+          react: {
+            requiredVersion: deps.react,
+            singleton: true 
+          },
+          'react-dom': {
+            requiredVersion: deps['react-dom'],
+            singleton: true 
+          },
         },
-        'react-dom': {
-          requiredVersion: deps['react-dom'],
-          singleton: true 
-        }
-      },
+        '_components/Shared',
+      ]
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',

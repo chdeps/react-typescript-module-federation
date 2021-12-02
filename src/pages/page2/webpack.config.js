@@ -30,7 +30,7 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: 'page2',
-      filename: 'remoteEntry.js',
+      filename: 'entryTwo.js',
       exposes: {
         './PageTwo': './src/PageTwo',
       },
@@ -42,7 +42,7 @@ module.exports = {
         'react-dom': {
           requiredVersion: deps['react-dom'],
           singleton: true 
-        }
+        },
       },
     }),
     new HtmlWebpackPlugin({
