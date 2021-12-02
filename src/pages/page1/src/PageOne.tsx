@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Shared } from "_components/Shared";
+import { Context } from "_k/Context";
 import { singleton } from "_k/singleton";
 
 const PageOne = () => {
   const [count, setCount] = useState(0);
+  const ctx = useContext(Context);
 
   return (
     <div>
@@ -19,6 +21,7 @@ const PageOne = () => {
       >
         Access singleton
       </button>
+      <p>Context value : {ctx}</p>
     </div>
   );
 };
