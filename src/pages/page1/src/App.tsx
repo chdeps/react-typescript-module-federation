@@ -1,11 +1,11 @@
 import React from 'react';
-import CounterAppOne from './components/CounterAppOne';
+import PageTwo from './PageOne';
 
 const App = () => (
   <div style={{ margin: '20px' }}>
     <div>APP-1 - S4 </div>
     <div>
-      <CounterAppOne />
+      <PageTwo />
     </div>
   </div>
 );

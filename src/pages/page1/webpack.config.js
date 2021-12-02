@@ -32,7 +32,7 @@ module.exports = {
       name: 'page1',
       filename: 'remoteEntry.js',
       exposes: {
-        './CounterAppOne': './src/components/CounterAppOne',
+        './PageOne': './src/PageOne',
       },
       shared: {
         react: {

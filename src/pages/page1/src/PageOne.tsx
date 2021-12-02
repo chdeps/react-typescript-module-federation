@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-const Counter = () => {
+const PageOne = () => {
   const [count, setCount] = useState(0);
 
   return (
     <div>
       <p>
-        Add by one each click <strong>APP-1</strong>
+        Increment by 1 on <strong>APP-1</strong>
       </p>
       <p>Your click count : {count} </p>
       <button onClick={() => setCount(count + 1)}>Click me</button>
@@ -14,4 +14,4 @@ const Counter = () => {
   );
 };
 
-export default Counter;
+export default PageOne;
