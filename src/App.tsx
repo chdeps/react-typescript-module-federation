@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Shared } from "_components/Shared";
 //@ts-ignore
 const PageTwo = React.lazy(() => import("page2/PageTwo"));
 import IntegratedPageTwo from "_pages/page2/src/PageTwo";
+import { init, singleton } from "_k/singleton";
 //@ts-ignore
-// import PageOne from "page1/PageOne";
 const PageOne = React.lazy(() => import("page1/PageOne"));
 
 export default () => {
   const [isPageOne, setIsPageOne] = useState(true);
+  useEffect(() => {
+    init();
+  }, []);
+
   return (
     <div style={{ margin: "20px" }}>
       <div
@@ -59,7 +63,18 @@ export default () => {
             margin: "2rem",
           }}
         >
-          <button onClick={() => setIsPageOne((_) => !_)}>Switch page</button>
+          <button
+            style={{ margin: "2rem" }}
+            onClick={() => setIsPageOne((_) => !_)}
+          >
+            Switch page
+          </button>
+          <button
+            style={{ margin: "2rem" }}
+            onClick={() => console.log(singleton._var)}
+          >
+            Access singleton
+          </button>
         </div>
       </div>
     </div>

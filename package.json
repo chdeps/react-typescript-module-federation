@@ -17,8 +17,9 @@
     "webpack-dev-server": "^4.4.0"
   },
   "scripts": {
-    "start": "concurrently \"webpack-cli serve\" \"cd ./src/pages/page1 && webpack-cli serve\" \"cd ./src/pages/page2 && webpack-cli serve\"",
-    "build": "concurrently \"webpack --mode production\" \"webpack --mode production --config ./src/pages/page1/webpack.config.js\" \"webpack --mode production --config ./src/pages/page2/webpack.config.js\""
+    "build": "concurrently \"webpack --mode production\" \"cd ./src/pages/page1 && webpack --mode production\" \"cd ./src/pages/page2 && webpack --mode production\"",
+    "start:all": "concurrently \"webpack-cli serve\" \"cd ./src/pages/page1 && webpack-cli serve\" \"cd ./src/pages/page2 && webpack-cli serve\"",
+    "start:container": "concurrently \"webpack-cli serve\" \"cd ./src/pages/page1 && serve dist -p 3001\" \"cd ./src/pages/page2 && serve dist -p 3002\""
   },
   "dependencies": {
     "react": "^17.0.2",

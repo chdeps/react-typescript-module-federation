@@ -19,6 +19,7 @@
     "paths": {
       "_components/*": ["src/components/*"],
       "_pages/*": ["src/pages/*"],
+      "_k/*": ["src/*"]
     }
   },
   "include": ["src"],

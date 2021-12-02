@@ -48,6 +48,7 @@ module.exports = {
           },
         },
         '_components/Shared',
+        '_k/singleton'
       ]
     }),
     new HtmlWebpackPlugin({
