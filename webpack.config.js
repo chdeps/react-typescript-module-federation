@@ -11,6 +11,12 @@ module.exports = {
     static: {
       directory: path.join(__dirname, "dist"),
     },
+    client: {
+      overlay: {
+        errors: true,
+        warnings: false,
+      },
+    },
     port: 3000,
   },
   output: {

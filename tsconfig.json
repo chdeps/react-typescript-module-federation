@@ -25,6 +25,8 @@
   "include": ["src"],
   "exclude": [
     "./src/pages/page1/webpack.config.js", 
-    "./src/pages/page2/webpack.config.js"
+    "./src/pages/page2/webpack.config.js",
+    "./src/pages/page2/dist/*",
+    "./src/pages/page1/dist/*",
   ]
 }
