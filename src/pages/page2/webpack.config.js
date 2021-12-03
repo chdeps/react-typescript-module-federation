@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const path = require('path');
 const deps = require('../../../package.json').dependencies
 
@@ -17,6 +18,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
+    plugins: [new TsconfigPathsPlugin({ configFile: "../../../tsconfig.json" })]
   },
   module: {
     rules: [
@@ -43,6 +45,10 @@ module.exports = {
           requiredVersion: deps['react-dom'],
           singleton: true 
         },
+        'd3' :{
+          import: 'd3',
+          requiredVersion: deps['d3'],
+        }
       },
     }),
     new HtmlWebpackPlugin({

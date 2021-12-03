@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { D3Test } from "_components/D3";
 
 const PageTwo = () => {
   const [count, setCount] = useState(1);
@@ -12,6 +13,7 @@ const PageTwo = () => {
       <button onClick={() => setCount((prevState) => prevState * 2)}>
         Click me
       </button>
+      <D3Test />
     </div>
   );
 };

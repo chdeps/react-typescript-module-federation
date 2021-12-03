@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
+    "@types/d3": "^7.1.0",
     "@types/node": "^15.0.3",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.5",
@@ -22,6 +23,7 @@
     "start:container": "concurrently \"webpack-cli serve\" \"cd ./src/pages/page1 && serve dist -p 3001\" \"cd ./src/pages/page2 && serve dist -p 3002\""
   },
   "dependencies": {
+    "d3": "^7.1.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }

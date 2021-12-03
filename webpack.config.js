@@ -46,6 +46,10 @@ module.exports = {
             requiredVersion: deps['react-dom'],
             singleton: true 
           },
+          'd3' :{
+            import: 'd3',
+            requiredVersion: deps['d3'],
+          }
         },
         '_components/Shared',
         '_k/singleton',
